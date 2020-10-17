@@ -26,7 +26,6 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.sun.tools.doclint.Entity.and;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -39,17 +38,21 @@ public class Task2 extends BaseUiTests {
     String apple = "//label[contains(text(), 'Apple')]";
     String honor = "//label[contains(text(), 'Honor')]";
     String productTitle = "span.goods-tile__title";
-    String productPrice = "span.goods-tile__price-value";
     String a = "Samsung";
     String b = "Honor";
     String c = "Apple";
     String min = "//input[@formcontrolname='min']";
+    String min2 = "5000";
+    String max2 = "15000";
     String max = "//input[@formcontrolname='max']";
     String ram8Gb = "//label[contains(text(), ' 8 ГБ')]";
     String ram6Gb = "//label[contains(text(), ' 6 ГБ')]";
     String d = "8 ГБ";
     String e = "6 ГБ";
+    String ok = "//button[@type='submit']";
     String productValue = "span.goods-tile__price-value";
+    String valueFilter = "//a[@class='catalog-selection__link'][contains(text(),' 5000-15000 ')]";
+    String selector = "//a[@class='catalog-selection__link']";
 
     @BeforeMethod
     public void navigateToUrl() {
@@ -78,16 +81,6 @@ public class Task2 extends BaseUiTests {
                 }
             }
         }
-
-
-//        wait.until(visibilityOfElementLocated(By.xpath("//*[@class='catalog-selection__link catalog-selection__link_type_reset']"))).click();
-//        assertEquals(driver.getCurrentUrl(), "https://rozetka.com.ua/mobile-phones/c80003/");
-////        wait.until(visibilityOfElementLocated(By.xpath("//input[@type='checkbox' and @id='Apple']"))).click();
-//        wait.until(visibilityOfElementLocated(By.xpath("https://rozetka.com.ua/mobile-phones/c80003/producer=apple/"))).click();
-//        assertEquals(driver.getCurrentUrl(), "https://rozetka.com.ua/mobile-phones/c80003/producer=apple/");
-
-
-        //a[@class='catalog-selection__link'][contains(@href,'c80003')]
     }
 
     @Test
@@ -99,11 +92,11 @@ public class Task2 extends BaseUiTests {
         driver.findElement(By.xpath(mobPhone)).click();
         wait.until(visibilityOfElementLocated(By.cssSelector(pictures)));
         driver.findElement(By.xpath(min)).clear();
-        driver.findElement(By.xpath(min)).sendKeys("5000");
+        driver.findElement(By.xpath(min)).sendKeys(min2);
         driver.findElement(By.xpath(max)).clear();
-        driver.findElement(By.xpath(max)).sendKeys("15000");
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        wait.until(visibilityOfElementLocated(By.xpath("//a[@class='catalog-selection__link'][contains(text(),' 5000-15000 ')]")));
+        driver.findElement(By.xpath(max)).sendKeys(max2);
+        driver.findElement(By.xpath(ok)).click();
+        wait.until(visibilityOfElementLocated(By.xpath(valueFilter)));
 //
 //        List<WebElement> filter2 = driver.findElements(By.cssSelector(productValue));
 //        for (WebElement lable : filter2) {
@@ -132,7 +125,7 @@ public class Task2 extends BaseUiTests {
         wait.until(visibilityOfElementLocated(By.xpath(ram8Gb)));
         wait.until(visibilityOfElementLocated(By.xpath(ram6Gb))).click();
         wait.until(visibilityOfElementLocated(By.xpath(ram6Gb)));
-        wait.until(visibilityOfElementLocated(By.xpath("//a[@class='catalog-selection__link']")));
+        wait.until(visibilityOfElementLocated(By.xpath(selector)));
 
 
         List<WebElement> itemsRam = driver.findElements(By.xpath(productTitle));
@@ -145,8 +138,6 @@ public class Task2 extends BaseUiTests {
                     }
                 }
             }
-
-
         }
     }
 }
