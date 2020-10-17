@@ -26,24 +26,30 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static com.sun.tools.doclint.Entity.and;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 import static org.testng.AssertJUnit.assertTrue;
 
-public class test2 extends BaseUiTests {
+public class Task2 extends BaseUiTests {
     String input = "//input";
     String url = "https://rozetka.com.ua/";
     String query = "samsung";
     String pictures = "a.goods-tile__picture";
     String mobPhone = "//a[contains(@href,'mobile-phones')]//span[contains(text(),'Мобильные телефоны')]";
-    String iphone = "//label[contains(text(), 'Apple')]";
+    String apple = "//label[contains(text(), 'Apple')]";
     String honor = "//label[contains(text(), 'Honor')]";
     String productTitle = "span.goods-tile__title";
     String productPrice = "span.goods-tile__price-value";
     String a = "Samsung";
     String b = "Honor";
     String c = "Apple";
-    String min = "//input[@class='slider-filter__input ng-pristine ng-valid ng-touched']";
-
+    String min = "//input[@formcontrolname='min']";
+    String max = "//input[@formcontrolname='max']";
+    String ram8Gb = "//label[contains(text(), ' 8 ГБ')]";
+    String ram6Gb = "//label[contains(text(), ' 6 ГБ')]";
+    String d = "8 ГБ";
+    String e = "6 ГБ";
+    String productValue = "span.goods-tile__price-value";
 
     @BeforeMethod
     public void navigateToUrl() {
@@ -57,8 +63,8 @@ public class test2 extends BaseUiTests {
         driver.findElement(By.xpath(input)).sendKeys(query + Keys.ENTER);
         wait.until(visibilityOfElementLocated(By.cssSelector(pictures)));
         driver.findElement(By.xpath(mobPhone)).click();
-        wait.until(visibilityOfElementLocated(By.xpath(iphone))).click();
-        wait.until(visibilityOfElementLocated(By.xpath(iphone)));
+        wait.until(visibilityOfElementLocated(By.xpath(apple))).click();
+        wait.until(visibilityOfElementLocated(By.xpath(apple)));
         driver.findElement(By.xpath(honor)).click();
         wait.until(visibilityOfElementLocated(By.xpath(honor)));
         List<WebElement> items = driver.findElements(By.cssSelector(productTitle));
@@ -88,13 +94,18 @@ public class test2 extends BaseUiTests {
 
     public void Task2Part2() {
         driver.manage().window().maximize();
-        driver.findElement(By.xpath("//input")).sendKeys("samsung" + Keys.ENTER);
-        wait.until(visibilityOfElementLocated(By.cssSelector("a.goods-tile__picture")));
-        driver.findElement(By.xpath("//a[contains(@href,'mobile-phones')]//span[contains(text(),'Мобильные телефоны')]")).click();
-        driver.findElement(By.xpath("//input[@class='slider-filter__input ng-pristine ng-valid ng-touched']")).sendKeys("5000" + Keys.ENTER);
-        driver.findElement(By.xpath("//input[@class='slider-filter__input ng-untouched ng-pristine ng-valid']")).sendKeys("15000" + Keys.ENTER);
+        driver.findElement(By.xpath(input)).sendKeys(query + Keys.ENTER);
+        wait.until(visibilityOfElementLocated(By.cssSelector(pictures)));
+        driver.findElement(By.xpath(mobPhone)).click();
+        wait.until(visibilityOfElementLocated(By.cssSelector(pictures)));
+        driver.findElement(By.xpath(min)).clear();
+        driver.findElement(By.xpath(min)).sendKeys("5000");
+        driver.findElement(By.xpath(max)).clear();
+        driver.findElement(By.xpath(max)).sendKeys("15000");
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        wait.until(visibilityOfElementLocated(By.xpath("//a[@class='catalog-selection__link'][contains(text(),' 5000-15000 ')]")));
 //
-//        List<WebElement> filter2 = driver.findElements(By.cssSelector(productPrice));
+//        List<WebElement> filter2 = driver.findElements(By.cssSelector(productValue));
 //        for (WebElement lable : filter2) {
 //
 //            if (!lable.getText().contains(a)) {
@@ -105,18 +116,37 @@ public class test2 extends BaseUiTests {
 //                }
 //            }
 //        }
-
+//
+//    }
     }
+
 
     @Test
 
     public void Task2Parr3() {
         driver.manage().window().maximize();
-        driver.findElement(By.xpath("//input")).sendKeys("samsung" + Keys.ENTER);
-        wait.until(visibilityOfElementLocated(By.cssSelector("a.goods-tile__picture")));
-        driver.findElement(By.xpath("//a[contains(@href,'mobile-phones')]//span[contains(text(),'Мобильные телефоны')]")).click();
+        driver.findElement(By.xpath(input)).sendKeys(query + Keys.ENTER);
+        wait.until(visibilityOfElementLocated(By.cssSelector(pictures)));
+        driver.findElement(By.xpath(mobPhone)).click();
+        wait.until(visibilityOfElementLocated(By.xpath(ram8Gb))).click();
+        wait.until(visibilityOfElementLocated(By.xpath(ram8Gb)));
+        wait.until(visibilityOfElementLocated(By.xpath(ram6Gb))).click();
+        wait.until(visibilityOfElementLocated(By.xpath(ram6Gb)));
+        wait.until(visibilityOfElementLocated(By.xpath("//a[@class='catalog-selection__link']")));
 
 
+        List<WebElement> itemsRam = driver.findElements(By.xpath(productTitle));
+        for (WebElement lable : itemsRam) {
+
+            if (!lable.getText().contains(a)) {
+                if (!lable.getText().contains(d)) {
+                    if (!lable.getText().contains(e)) {
+                        assertTrue(false);
+                    }
+                }
+            }
+
+
+        }
     }
-
 }
