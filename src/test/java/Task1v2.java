@@ -97,6 +97,8 @@ public class Task1v2 extends BaseUiTests {
         driver.findElement(By.xpath(productBody2)).getText();
         assertEquals(firstProdFiltered, first);
         assertEquals(secondProdFiltered, second);
+    }
+}
 
 
 //        WebElement compareSecondItem = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@class='compare-button']")));
@@ -185,10 +187,10 @@ public class Task1v2 extends BaseUiTests {
 //
 //
 //        assertThat(intFirstPriceInCompare, equalTo(price1));
-//        assertThat(intSecondPriceInCompare, equalTo(price2));
-    }
-}
-
+////        assertThat(intSecondPriceInCompare, equalTo(price2));
+//    }
+//}
+//
 
 //
 //        wait.until(visibilityOfElementLocated(By.xpath("//*[@class='buy-button__label']")));
