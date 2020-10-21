@@ -38,18 +38,18 @@ public class Task2 extends BaseUiTests {
     String apple = "//label[contains(text(), 'Apple')]";
     String honor = "//label[contains(text(), 'Honor')]";
     String productTitle = "span.goods-tile__title";
-    String a = "Samsung";
-    String b = "Honor";
-    String c = "Apple";
+    String samsung = "Samsung";
+    String honor1 = "Honor";
+    String apple1 = "Apple";
     String min = "//input[@formcontrolname='min']";
     String min2 = "5000";
     String max2 = "15000";
     String max = "//input[@formcontrolname='max']";
     String ram8Gb = "//label[contains(text(), ' 8 ГБ')]";
     String ram6Gb = "//label[contains(text(), ' 6 ГБ')]";
-    String d = "8 ГБ";
-    String e = "6 ГБ";
-    String ok = "//button[@type='submit']";
+    String gb8 = "8 ГБ";
+    String gb6 = "6 ГБ";
+    String okButton = "//button[@type='submit']";
     String productValue = "span.goods-tile__price-value";
     String valueFilter = "//a[@class='catalog-selection__link'][contains(text(),' 5000-15000 ')]";
     String selector = "//a[@class='catalog-selection__link']";
@@ -73,9 +73,9 @@ public class Task2 extends BaseUiTests {
         List<WebElement> items = driver.findElements(By.cssSelector(productTitle));
         for (WebElement lable : items) {
 
-            if (!lable.getText().contains(a)) {
-                if (!lable.getText().contains(b)) {
-                    if (!lable.getText().contains(c)) {
+            if (!lable.getText().contains(samsung)) {
+                if (!lable.getText().contains(honor1)) {
+                    if (!lable.getText().contains(apple1)) {
                         assertTrue(false);
                     }
                 }
@@ -95,22 +95,8 @@ public class Task2 extends BaseUiTests {
         driver.findElement(By.xpath(min)).sendKeys(min2);
         driver.findElement(By.xpath(max)).clear();
         driver.findElement(By.xpath(max)).sendKeys(max2);
-        driver.findElement(By.xpath(ok)).click();
+        driver.findElement(By.xpath(okButton)).click();
         wait.until(visibilityOfElementLocated(By.xpath(valueFilter)));
-//
-//        List<WebElement> filter2 = driver.findElements(By.cssSelector(productValue));
-//        for (WebElement lable : filter2) {
-//
-//            if (!lable.getText().contains(a)) {
-//                if (!lable.getText().contains(b)) {
-//                    if (!lable.getText().contains(c)) {
-//                        assertTrue(false);
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
     }
 
 
@@ -131,9 +117,9 @@ public class Task2 extends BaseUiTests {
         List<WebElement> itemsRam = driver.findElements(By.xpath(productTitle));
         for (WebElement lable : itemsRam) {
 
-            if (!lable.getText().contains(a)) {
-                if (!lable.getText().contains(d)) {
-                    if (!lable.getText().contains(e)) {
+            if (!lable.getText().contains(samsung)) {
+                if (!lable.getText().contains(gb8)) {
+                    if (!lable.getText().contains(gb6)) {
                         assertTrue(false);
                     }
                 }
