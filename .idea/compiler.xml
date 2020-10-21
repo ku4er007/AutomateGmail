@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="HomeWork22" />
+        <module name="HomeWork22 — копия" />
       </profile>
     </annotationProcessing>
   </component>
