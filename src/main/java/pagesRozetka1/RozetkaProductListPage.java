@@ -24,7 +24,7 @@ public class RozetkaProductListPage {
     public void selectProductLess3000Grn(){
         List<WebElement> prices = webDriver.findElements(findGoodsTitle);
         int count;
-        for (count = 1; count <= prices.size(); count++) {
+        for (count = 1 ; count <= prices.size(); count++) {
             String price = webDriver.findElement(By.xpath("//ul[@class='catalog-grid']//li[" + count + "]//span[@class='goods-tile__price-value']")).getText().replaceAll("\\s", "");
             int priceFiltered = Integer.parseInt(price);
             if (priceFiltered < 3000) {
@@ -32,7 +32,7 @@ public class RozetkaProductListPage {
                 break;
             }
         }
-    }
+    } 
 
     public void selectProductLessThanFirstProduct(){
         List<WebElement> pricesSecond = webDriver.findElements(findGoodsTitle);

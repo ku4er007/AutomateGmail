@@ -19,6 +19,7 @@ public class RozetkaMainPage {
         this.webDriver = webDriver;
         this.wait = new WebDriverWait(webDriver, 5);
     }
+
     String query = "samsung";
     By searchInputField = By.xpath("//input");
     By productPictures = By.cssSelector("a.goods-tile__picture");
@@ -27,26 +28,36 @@ public class RozetkaMainPage {
     By honorFilterElement = By.xpath("//label[contains(text(), 'Honor')]");
     By productTitle = By.className("span.goods-tile__title");
 
+    public void maximaseScreen() {
+        webDriver.manage().window().maximize();
+    }
+
     public void enterSearchQuery() {
         webDriver.findElement(searchInputField).sendKeys(query + Keys.ENTER);
     }
-    public void findeMobileElementAndClick(){
+
+    public void findeMobileElementAndClick() {
         webDriver.findElement(mobilePhoneElement).click();
     }
-    public void showHonorFilterElementAndClick(){
+
+    public void showHonorFilterElementAndClick() {
         webDriver.findElement(honorFilterElement).click();
     }
-    public void checkSelectedFilters(){
+
+    public void checkSelectedFilters() {
         List<WebElement> items = webDriver.findElements(productTitle);
     }
-    public void waitProductPictures(){
+
+    public void waitProductPictures() {
         wait.until(visibilityOfElementLocated(productPictures));
     }
-    public void showAppleFilterElementAndClick(){
+
+    public void showAppleFilterElementAndClick() {
         wait.until(visibilityOfElementLocated(appleFilterElement)).click();
         wait.until(visibilityOfElementLocated(appleFilterElement));
     }
-    public void waitHonorFilterElementAndClick(){
+
+    public void waitHonorFilterElementAndClick() {
         wait.until(visibilityOfElementLocated(honorFilterElement));
     }
 }

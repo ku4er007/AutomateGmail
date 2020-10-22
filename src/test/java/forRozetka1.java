@@ -19,8 +19,8 @@ public class forRozetka1 extends BaseUiTests {
     @Test
     public void positivEnterSearchTest() {
         //RozetkaMainPage
-        driver.manage().window().maximize();
         RozetkaMainPage rozetkaMainPage = new RozetkaMainPage(driver);
+        rozetkaMainPage.maximaseScreen();
         rozetkaMainPage.selectingSideMenuItem();
         rozetkaMainPage.waitMonitorItem();
         rozetkaMainPage.selectMonitorInList();

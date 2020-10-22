@@ -22,8 +22,8 @@ public class forRozetka2 extends BaseUiTests {
     @Test
 
     public void Task2Part1() {
-        driver.manage().window().maximize();
         RozetkaMainPage rozetkaMainPage = new RozetkaMainPage(driver);
+        rozetkaMainPage.maximaseScreen();
         rozetkaMainPage.enterSearchQuery();
         rozetkaMainPage.waitProductPictures();
         rozetkaMainPage.findeMobileElementAndClick();
@@ -46,8 +46,8 @@ public class forRozetka2 extends BaseUiTests {
     @Test
 
     public void Task2Part2() {
-        driver.manage().window().maximize();
         RozetkaMainPage rozetkaMainPage = new RozetkaMainPage(driver);
+        rozetkaMainPage.maximaseScreen();
         rozetkaMainPage.enterSearchQuery();
         rozetkaMainPage.waitProductPictures();
         rozetkaMainPage.findeMobileElementAndClick();
@@ -60,8 +60,8 @@ public class forRozetka2 extends BaseUiTests {
     @Test
 
     public void Task2Parr3() {
-        driver.manage().window().maximize();
         RozetkaMainPage rozetkaMainPage = new RozetkaMainPage(driver);
+        rozetkaMainPage.maximaseScreen();
         rozetkaMainPage.enterSearchQuery();
         rozetkaMainPage.waitProductPictures();
         rozetkaMainPage.findeMobileElementAndClick();

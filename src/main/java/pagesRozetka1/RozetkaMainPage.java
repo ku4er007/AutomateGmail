@@ -20,6 +20,9 @@ public class RozetkaMainPage {
     By sideMenuElementComputerNetbook = By.xpath("//a[contains(@href,'computers-notebooks')][@class='menu-categories__link']");
     By sideMenuElementMonitors = By.xpath("//a[@class='menu__link'][contains(@href,'monitors/c80089')][contains(text(),'Мониторы')]");
 
+    public void maximaseScreen(){
+        webDriver.manage().window().maximize();
+    }
     public void selectingSideMenuItem() {
         Actions actions = new Actions(webDriver);
         WebElement sideMenu = webDriver.findElement(sideMenuElementComputerNetbook);
